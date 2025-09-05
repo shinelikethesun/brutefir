@@ -334,18 +334,19 @@ do_mute(struct subdev *sd,
 	}
 	break;
     case 3:
-	for (p = &buf->u8[mid_offset];
+        for (p = &buf->u8[mid_offset];
              p < endp;
              p += sd->channels.open_channels)
         {
-	    for (n = 0; n < n_mute; n++) {
-		p[bsch[n]+0] = 0;
-		p[bsch[n]+1] = 0;
-		p[bsch[n]+2] = 0;
-	    }
-	}
+            for (n = 0; n < n_mute; n++) {
+                p[bsch[n]+0] = 0;
+                p[bsch[n]+1] = 0;
+                p[bsch[n]+2] = 0;
+            }
+        }
+        break;
     case 4: {
-	for (p32 = &buf->u32[mid_offset>>2];
+        for (p32 = &buf->u32[mid_offset>>2];
              (uint8_t *)p32 < endp;
              p32 += sd->channels.open_channels)
         {
